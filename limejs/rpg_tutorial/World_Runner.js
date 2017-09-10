@@ -246,14 +246,14 @@ goog.require('lime.audio.Audio');
 
    //give hero & monster attributes
 				student.life = 20;
-				student.money = 100;
+				student.money = 0;
 				student.attack = 15;
 				student.level = 1;
 
 
 				var monster = new lime.Sprite().setSize(225, 225).setFill('monster.png').setPosition(690,310);
 				monster.life = 15;
-				monster.money = 10;
+				monster.money = 0;
 				monster.attack = 1;
 
 				var transitionA = new lime.Sprite().setSize(60, 100).setPosition(880,310);
@@ -548,6 +548,8 @@ function rightAnswer (sceneInput){
 					var transitionB = new lime.Sprite().setSize(60, 100).setPosition(460,70);
 					var powerBarTwo = new lime.Sprite().setSize(90, 20).setFill('img/powerbar.png').setPosition(60,20);
 					var coin = new lime.Sprite().setSize(20,20).setFill('img/coin.png').setPosition(500,300);
+					var moneyLabel = new lime.Label().setSize(50,50).setText(student.money).setFill('#FFF').setPosition(890,50);
+
 
 					mapTwoLayer.appendChild(twoMap);
 					mapTwoLayer.appendChild(studentTwo);
@@ -557,6 +559,7 @@ function rightAnswer (sceneInput){
 					mapTwoLayer.appendChild(transitionB);
 					mapTwoLayer.appendChild(coin);
 					mapTwoLayer.appendChild(powerBarTwo);
+					mapTwoLayer.appendChild(moneyLabel);
 					mapTwoScene.appendChild(mapTwoLayer);
 
 					//mapTwoLayer.appendChild(transition);
@@ -795,6 +798,23 @@ goog.events.listen(correctButtonB, ['mousedown','touchstart'], function(e) {
 
 						 }, 1500);
 					 });*/
+					 var coinloop = 0;
+
+			 							lime.scheduleManager.schedule(function(dt) {
+			 										if(goog.math.Box.intersects(this.getBoundingBox(),coin.getBoundingBox())) {
+			 												if (coinloop === 0) {
+															console.log('coin');
+															coin.setHidden(true);
+															delete coin;
+															student.money++;
+															console.log(student.money);
+															coinloop++;
+															moneyLabel.setText(student.money)
+														};
+														// var hello = new lime.Label().setSize(255,60).setText('HELLO!!').setFill('#FFF').setPosition(470,150);
+			 											// mapTwoLayer.appendChild(hello);
+			 										}
+			 							}, studentTwo);
 
 
 
