@@ -186,8 +186,8 @@ goog.require('lime.audio.Audio');
 				var labelTavern = new lime.Label().setSize(425,90).setText('Hola. Me llamo Nafi. Yo puedo darte cosas que necesitas. Que quieres?').setFontSize(27).setFontFamily("tahoma").setFontWeight("bold").setFill('#FFF').setPosition(600,160);
 				var littlePablo = new lime.Sprite().setSize(70,70).setFill('img/pabloHead.png').setPosition(905,35);
 				var hintLabel = new lime.Label().setSize(125,50).setText('Ayuda / Help ?').setFontSize(14).setFontFamily("tahoma").setFontWeight("bold").setFill('#FFF').setPosition(785,20).setAlign('Left');
-				var helpLabel = new lime.Label().setSize(300,90).setText('Nafi says he can give you things that he needs. Que quieres means what do you want?').setFontSize(14).setFontFamily("tahoma").setFill('#FFF').setPosition(490,60).setPadding(5);
-				helpLabel.setStroke(5,0,100,0,.8);
+				var helpLabel = new lime.Label().setSize(230,90).setText('Nafi says he can give you things that he needs. Que quieres means what do you want?').setFontSize(14).setFontFamily("tahoma").setFill('#FFF').setPosition(490,60).setPadding(5);
+				helpLabel.setStroke(2,50,100,40,.8);
 
 				goog.events.listen(hintLabel, ['mousedown','touchstart'], function(e) {
 						tradingLayer.appendChild(helpLabel)
@@ -543,13 +543,14 @@ function rightAnswer (sceneInput){
 
 						//var student = new lime.Sprite().setSize(50,55).setFill('img/student.png').setPosition(100,100);
 					var studentTwo = new lime.Sprite().setSize(125,125).setFill(hero.getFill()).setPosition(50,310);
-					var monsterTwo = new lime.Sprite().setSize(225,225).setFill(monster.getFill()).setPosition(350,310);
+					var monsterTwo = new lime.Sprite().setSize(225,225).setFill('img/monsterGreen.png').setPosition(350,310);
 					var crackB = new lime.Sprite().setSize(275,275).setFill(crackhorizontal.getFill()).setPosition(515,585);
 					var transitionB = new lime.Sprite().setSize(60, 100).setPosition(460,70);
 					var powerBarTwo = new lime.Sprite().setSize(90, 20).setFill('img/powerbar.png').setPosition(60,20);
 					var coin = new lime.Sprite().setSize(20,20).setFill('img/coin.png').setPosition(500,300);
-					var moneyLabel = new lime.Label().setSize(50,50).setText(student.money).setFill('#FFF').setPosition(890,50);
-
+					var coinIcon = new lime.Sprite().setSize(20,20).setFill('img/coin.png').setPosition(860,32);
+					var moneyLabel = new lime.Label().setSize(50,50).setText(student.money).setFill('#FFF').setPosition(900,50);
+					//moneyLabel.setStroke(5,0,100,0,.5);
 
 					mapTwoLayer.appendChild(twoMap);
 					mapTwoLayer.appendChild(studentTwo);
@@ -559,6 +560,7 @@ function rightAnswer (sceneInput){
 					mapTwoLayer.appendChild(transitionB);
 					mapTwoLayer.appendChild(coin);
 					mapTwoLayer.appendChild(powerBarTwo);
+					mapTwoLayer.appendChild(coinIcon);
 					mapTwoLayer.appendChild(moneyLabel);
 					mapTwoScene.appendChild(mapTwoLayer);
 
@@ -1109,7 +1111,10 @@ goog.events.listen(correctButtonB, ['mousedown','touchstart'], function(e) {
 														// mapTwoLayer.appendChild(hello);
 														var nafi = new Audio('audio/Tavern3.m4a');
 														nafi.play();
-
+															setTimeout(function () {
+																var tavernMusica = new Audio('audio/GreenPony.mp3');
+																tavernMusica.play();
+															}, 8000);
 													}
 											}
 										}, studentFour);
