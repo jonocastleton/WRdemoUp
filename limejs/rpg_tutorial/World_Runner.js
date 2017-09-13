@@ -251,7 +251,7 @@ goog.require('lime.audio.Audio');
 				student.level = 1;
 
 
-				var monster = new lime.Sprite().setSize(225, 225).setFill('monster.png').setPosition(690,310);
+				var monster = new lime.Sprite().setSize(225, 225).setFill('img/monsterBlue.png').setPosition(690,310);
 				monster.life = 15;
 				monster.money = 0;
 				monster.attack = 1;
@@ -608,7 +608,7 @@ function rightAnswer (sceneInput){
 
 //show the images of the monster and student
  var studentFighterB = new lime.Sprite().setSize(student.getSize()).setFill(student.getFill()).setPosition(250,450);
- var monsterFighterB = new lime.Sprite().setSize(monster.getSize()).setFill(monster.getFill()).setPosition(750, 430);
+ var monsterFighterB = new lime.Sprite().setSize(monsterTwo.getSize()).setFill(monsterTwo.getFill()).setPosition(750, 430);
 //	var everyMonster = new lime.Sprite();
 //	everyMonster = fighterTwo;
 
